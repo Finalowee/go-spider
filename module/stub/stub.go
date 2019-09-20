@@ -2,9 +2,9 @@ package stub
 
 import (
 	"fmt"
-	"spider/errors"
-	"spider/helper/log"
-	"spider/module"
+	"go-spider/errors"
+	"go-spider/helper/log"
+	"go-spider/module"
 	"sync/atomic"
 )
 

@@ -4,8 +4,8 @@ import (
 	"github.com/Sirupsen/logrus"
 	"io"
 	"os"
-	"spider/helper/log/base"
-	"spider/helper/log/field"
+	"go-spider/helper/log/base"
+	"go-spider/helper/log/field"
 )
 
 // loggerLogrus 代表基于logrus的日志记录器的类型。

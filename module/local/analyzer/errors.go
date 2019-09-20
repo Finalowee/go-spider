@@ -1,6 +1,6 @@
 package analyzer
 
-import "spider/errors"
+import "go-spider/errors"
 
 // genError 用于生成爬虫错误值。
 func genError(errMsg string) error {

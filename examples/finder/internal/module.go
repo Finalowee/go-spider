@@ -1,10 +1,10 @@
 package internal
 
 import (
-	"spider/module"
-	"spider/module/local/analyzer"
-	"spider/module/local/downloader"
-	"spider/module/local/pipeline"
+	"go-spider/module"
+	"go-spider/module/local/analyzer"
+	"go-spider/module/local/downloader"
+	"go-spider/module/local/pipeline"
 )
 
 // snGen 代表组件序列号生成器。

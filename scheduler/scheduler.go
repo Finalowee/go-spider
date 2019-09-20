@@ -5,10 +5,10 @@ import (
 	"errors"
 	"fmt"
 	"net/http"
-	"spider/helper/cmap"
-	"spider/helper/log"
-	"spider/module"
-	"spider/toolkit/buffer"
+	"go-spider/helper/cmap"
+	"go-spider/helper/log"
+	"go-spider/module"
+	"go-spider/toolkit/buffer"
 	"strings"
 	"sync"
 )
@@ -101,6 +101,11 @@ func (ms *myScheduler) Init(requestArgs RequestArgs,
 	logger.Infof("-- Max depth: %d", ms.maxDepth)
 	ms.acceptedDomainMap, _ = cmap.NewConcurrentMap(1, nil)
 	logger.Infof("-- URL map: length: %d, concurrency: %d", ms.acceptedDomainMap.Len(), ms.acceptedDomainMap.Concurrency())
+	logger.Infof("-- Accepted primary domains: %v",
+		requestArgs.AcceptedDomains)
+	ms.urlMap, _ = cmap.NewConcurrentMap(16, nil)
+	logger.Infof("-- URL map: length: %d, concurrency: %d",
+		ms.urlMap.Len(), ms.urlMap.Concurrency())
 	// 其他初始化
 
 	ms.initBufferPool(dataArgs)
@@ -270,7 +275,7 @@ func (ms *myScheduler) Summary() SchedSummary {
 }
 
 func (ms *myScheduler) registerModules(args ModuleArgs) error {
-	for _, d := range args.Downloaders {
+	for _, d := range args.Downloader {
 		if nil == d {
 			continue
 		}
@@ -283,7 +288,7 @@ func (ms *myScheduler) registerModules(args ModuleArgs) error {
 			return genError(errMsg)
 		}
 	}
-	logger.Infof("All downloads have been registered. (number: %d)", len(args.Downloaders))
+	logger.Infof("All downloads have been registered. (number: %d)", len(args.Downloader))
 	for _, a := range args.Analyzers {
 		if a == nil {
 			continue
@@ -619,7 +624,9 @@ func (ms *myScheduler) sendReq(req *module.Request) bool {
 		return false
 	}
 	// 防止重复爬取
-	if v := ms.urlMap.Get(reqURL.String()); v != nil {
+	u := reqURL.String()
+	v := ms.urlMap.Get(u)
+	if v != nil {
 		logger.Warnf("Ignore the request! Its URL is repeated. (URL: %s)\n", reqURL)
 		return false
 	}
@@ -645,6 +652,6 @@ func (ms *myScheduler) sendReq(req *module.Request) bool {
 			logger.Warnln("The request buffer pool was closed. Ignore request sending.")
 		}
 	}(req)
-	ms.urlMap.Put(reqURL.String(), struct{}{})
+	_, _ = ms.urlMap.Put(reqURL.String(), struct{}{})
 	return true
 }

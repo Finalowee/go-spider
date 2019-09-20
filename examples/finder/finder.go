@@ -8,10 +8,10 @@ import (
 	"strings"
 	"time"
 
-	lib "spider/examples/finder/internal"
-	"spider/examples/finder/monitor"
-	"spider/helper/log"
-	sched "spider/scheduler"
+	lib "go-spider/examples/finder/internal"
+	"go-spider/examples/finder/monitor"
+	"go-spider/helper/log"
+	schedule "go-spider/scheduler"
 )
 
 // 命令参数。
@@ -48,10 +48,10 @@ func main() {
 	flag.Usage = Usage
 	flag.Parse()
 	// 创建调度器。
-	scheduler := sched.NewScheduler()
+	scheduler := schedule.NewScheduler()
 	// 准备调度器的初始化参数。
 	domainParts := strings.Split(domains, ",")
-	acceptedDomains := []string{}
+	acceptedDomains := make([]string, 0)
 	for _, domain := range domainParts {
 		domain = strings.TrimSpace(domain)
 		if domain != "" {
@@ -59,11 +59,11 @@ func main() {
 				append(acceptedDomains, domain)
 		}
 	}
-	requestArgs := sched.RequestArgs{
+	requestArgs := schedule.RequestArgs{
 		AcceptedDomains: acceptedDomains,
 		MaxDepth:        uint32(depth),
 	}
-	dataArgs := sched.DataArgs{
+	dataArgs := schedule.DataArgs{
 		ReqBufferCap:         50,
 		ReqMaxBufferNumber:   1000,
 		RespBufferCap:        50,
@@ -73,9 +73,9 @@ func main() {
 		ErrorBufferCap:       50,
 		ErrorMaxBufferNumber: 1,
 	}
-	downloaders, err := lib.GetDownloaders(1)
+	downloader, err := lib.GetDownloaders(1)
 	if err != nil {
-		logger.Fatalf("An error occurs when creating downloaders: %s", err)
+		logger.Fatalf("An error occurs when creating downloader: %s", err)
 	}
 	analyzers, err := lib.GetAnalyzers(1)
 	if err != nil {
@@ -85,10 +85,10 @@ func main() {
 	if err != nil {
 		logger.Fatalf("An error occurs when creating pipelines: %s", err)
 	}
-	moduleArgs := sched.ModuleArgs{
-		Downloaders: downloaders,
-		Analyzers:   analyzers,
-		Pipelines:   pipelines,
+	moduleArgs := schedule.ModuleArgs{
+		Downloader: downloader,
+		Analyzers:  analyzers,
+		Pipelines:  pipelines,
 	}
 	// 初始化调度器。
 	err = scheduler.Init(

@@ -2,9 +2,9 @@ package analyzer
 
 import (
 	"fmt"
-	"spider/module"
-	"spider/module/stub"
-	"spider/toolkit/reader"
+	"go-spider/module"
+	"go-spider/module/stub"
+	"go-spider/toolkit/reader"
 )
 
 type myAnalyzer struct {

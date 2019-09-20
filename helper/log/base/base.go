@@ -1,6 +1,6 @@
 package base
 
-import "spider/helper/log/field"
+import "go-spider/helper/log/field"
 
 // Option 代表日志记录器的选项。
 type Option interface {

@@ -2,8 +2,8 @@ package module
 
 import (
 	"fmt"
+	"go-spider/errors"
 	"net"
-	"spider/errors"
 	"strconv"
 	"strings"
 )

@@ -1,6 +1,6 @@
 package stub
 
-import "spider/module"
+import "go-spider/module"
 
 type ModuleInternal interface {
 	module.Module

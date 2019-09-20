@@ -2,7 +2,7 @@ package log
 
 import (
 	"os"
-	"spider/helper/log/base"
+	"go-spider/helper/log/base"
 	"testing"
 )
 

@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
-	"spider/helper/log"
+	"go-spider/helper/log"
 )
 
 // 日志记录器。

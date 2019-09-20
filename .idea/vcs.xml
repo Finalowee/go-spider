@@ -2,5 +2,9 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vender/PuerkitoBio/goquery" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vender/Sirupsen/logrus" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vender/github.com/PuerkitoBio/goquery" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vender/github.com/Sirupsen/logrus" vcs="Git" />
   </component>
 </project>

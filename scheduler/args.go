@@ -1,6 +1,6 @@
 package scheduler
 
-import "spider/module"
+import "go-spider/module"
 
 // Args 代表参数容器的接口类型。
 type Args interface {
@@ -106,8 +106,8 @@ type ModuleArgsSummary struct {
 
 // ModuleArgs 代表组件相关的参数容器的类型。
 type ModuleArgs struct {
-	// Downloaders 代表下载器列表。
-	Downloaders []module.Downloader
+	// Downloader 代表下载器列表。
+	Downloader []module.Downloader
 	// Analyzers 代表分析器列表。
 	Analyzers []module.Analyzer
 	// Pipelines 代表条目处理管道管道列表。
@@ -116,7 +116,7 @@ type ModuleArgs struct {
 
 // Check 用于当前参数容器的有效性。
 func (args *ModuleArgs) Check() error {
-	if len(args.Downloaders) == 0 {
+	if len(args.Downloader) == 0 {
 		return genError("empty downloader list")
 	}
 	if len(args.Analyzers) == 0 {
@@ -130,7 +130,7 @@ func (args *ModuleArgs) Check() error {
 
 func (args *ModuleArgs) Summary() ModuleArgsSummary {
 	return ModuleArgsSummary{
-		DownloaderListSize: len(args.Downloaders),
+		DownloaderListSize: len(args.Downloader),
 		AnalyzerListSize:   len(args.Analyzers),
 		PipelineListSize:   len(args.Pipelines),
 	}

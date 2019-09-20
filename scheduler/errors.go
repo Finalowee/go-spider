@@ -1,9 +1,9 @@
 package scheduler
 
 import (
-	"spider/errors"
-	"spider/module"
-	"spider/toolkit/buffer"
+	"go-spider/errors"
+	"go-spider/module"
+	"go-spider/toolkit/buffer"
 )
 
 // genError 用于生成爬虫错误值。

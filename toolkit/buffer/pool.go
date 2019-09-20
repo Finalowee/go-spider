@@ -2,7 +2,7 @@ package buffer
 
 import (
 	"fmt"
-	"spider/errors"
+	"go-spider/errors"
 	"sync"
 	"sync/atomic"
 )

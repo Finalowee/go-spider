@@ -3,8 +3,8 @@ package scheduler
 import (
 	"encoding/json"
 	"sort"
-	"spider/module"
-	"spider/toolkit/buffer"
+	"go-spider/module"
+	"go-spider/toolkit/buffer"
 )
 
 // SchedSummary 代表调度器摘要的接口类型。

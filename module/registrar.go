@@ -2,7 +2,7 @@ package module
 
 import (
 	"fmt"
-	"spider/errors"
+	"go-spider/errors"
 	"sync"
 )
 

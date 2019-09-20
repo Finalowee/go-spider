@@ -8,7 +8,7 @@ import (
 	"strings"
 
 	"github.com/PuerkitoBio/goquery"
-	"spider/module"
+	"go-spider/module"
 )
 
 // genResponseParses 用于生成响应解析器。

@@ -2,9 +2,9 @@ package pipeline
 
 import (
 	"fmt"
-	"spider/helper/log"
-	"spider/module"
-	"spider/module/stub"
+	"go-spider/helper/log"
+	"go-spider/module"
+	"go-spider/module/stub"
 )
 
 var logger = log.DLogger()

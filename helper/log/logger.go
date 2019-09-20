@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"io"
 	"os"
-	"spider/helper/log/base"
-	"spider/helper/log/logrus"
+	"go-spider/helper/log/base"
+	"go-spider/helper/log/logrus"
 	"sync"
 )
 

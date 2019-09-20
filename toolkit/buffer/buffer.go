@@ -2,7 +2,7 @@ package buffer
 
 import (
 	"fmt"
-	"spider/errors"
+	"go-spider/errors"
 	"sync"
 	"sync/atomic"
 )
@@ -74,7 +74,7 @@ func (mb *myBuffer) Get() (interface{}, error) {
 }
 
 func (mb *myBuffer) Close() bool {
-	if atomic.CompareAndSwapUint32(&mb.closed, 0, 1) {
+	if nil != mb.ch && atomic.CompareAndSwapUint32(&mb.closed, 0, 1) {
 		mb.closingLock.Lock()
 		close(mb.ch)
 		mb.closingLock.Unlock()

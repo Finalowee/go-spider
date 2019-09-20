@@ -2,8 +2,8 @@ package downloader
 
 import (
 	"net/http"
-	"spider/module"
-	"spider/module/stub"
+	"go-spider/module"
+	"go-spider/module/stub"
 )
 
 //下载器的实现类型

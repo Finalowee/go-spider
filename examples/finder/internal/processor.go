@@ -6,7 +6,7 @@ import (
 	"io"
 	"os"
 	"path/filepath"
-	"spider/module"
+	"go-spider/module"
 )
 
 // genItemProcessors 用于生成条目处理器。

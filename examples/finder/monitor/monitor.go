@@ -8,8 +8,8 @@ import (
 	"runtime"
 	"time"
 
-	"spider/helper/log"
-	sched "spider/scheduler"
+	"go-spider/helper/log"
+	sched "go-spider/scheduler"
 )
 
 // logger 代表日志记录器。
